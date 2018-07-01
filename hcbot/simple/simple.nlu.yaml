@@ -1,0 +1,120 @@
+sets:
+  confirm:
+    - 是的
+    - 是
+    - 确认
+    - 肯定
+    - 'YES'
+  deny:
+    - 不是
+    - 不要
+    - 不
+    - 'NO'
+    - 取消
+  carno:
+    - file: set/carno.txt
+  insurance:
+    - 车险
+    - 保险
+    - 车险费用
+    - 查一下车险
+    - 明年的车险
+  greet:
+    - Hello
+    - 你好
+    - Hi
+    - 嗨
+    - 见到你很高心
+  goodbye:
+    - 再见
+    - 拜拜
+    - Bye
+    - See you
+  province:
+    - file: set/province.txt
+  name:
+    - file: set/name.txt
+  city:
+    - file: set/city.txt
+  resturant:
+    - 中餐馆
+    - 西餐馆
+    - 泰国菜
+
+intents:
+  confirm:
+    - $(_confirm)
+  deny:
+    - $(_deny)
+  greet:
+    - $(_greet)
+  goodbye:
+    - $(_goodbye)
+  insurance:
+    - $(_insurance)
+  input_carno:
+    - $(carno)
+  inform_carno:
+    - 我的车牌是$(carno)
+    - 车牌是$(carno)
+  inform_name:
+    - 我是$(name)
+    - 我叫$(name)
+    - 可以叫我$(name)
+  ask_resturant:
+    - 我要找$(city)的$(resturant)
+
+
+stories:
+  hello:
+    - greet:
+      - utter_greet
+      - ask_name
+    - inform_name:
+      - utter_name
+      - ask_carno
+    - inform_carno:
+      - utter_carno
+    - insurance:
+      - action_query_insurance
+      - utter_yes_or_no
+    - confirm:
+      - utter_insurance
+    - goodbye:
+      - utter_bye
+
+slots:
+  fee:
+    type: text
+
+templates:
+  utter_greet:
+    - "您好, 我是机器人"
+  utter_bye:
+    - "再见, {name}, 为您服务很开心"
+  utter_name:
+    - "欢迎你, {name}"
+  utter_please_provide_name:
+    - "输入有误,请说出你的名字"
+  ask_name:
+    - "请问你叫什么名字"
+  ask_carno:
+    - "请问你的车牌是什么"
+  utter_carno:
+    - "{name}, 您的车牌号是{carno}"
+  utter_yes_or_no:
+    - "请问确认要投保吗?"
+  utter_insurance:
+    - "{name}, 您的车牌号为{carno}的车投保已成功,保险费为{fee},谢谢."
+
+actions:
+  - utter_greet
+  - utter_bye
+  - ask_name
+  - utter_name
+  - ask_carno
+  - utter_carno
+  - utter_please_provide_name
+  - utter_yes_or_no
+  - utter_insurance
+  - action.ActionQueryInsurance

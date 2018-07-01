@@ -1,0 +1,71 @@
+slots:
+  service:
+    type: text
+  name:
+    type: text
+  carno:
+    type: text
+  class:
+    type: text
+
+intents:
+  - greet
+  - inform_service
+  - inform_name
+  - inform_carno
+  - inform_class
+  - confirm
+  - deny
+  - goodbye
+  - thanks
+
+entities:
+  - service
+  - name
+  - carno
+  - class
+
+
+templates:
+  utter_greet:
+    - "您好!，我是机器人小热，很高兴为您服务。"
+    - "你好!，我是小热，可以帮您办理车险报价业务。"
+    - "hi!，人家是小热，有什么可以帮您吗。"
+  utter_goodbye:
+    - "再见，为您服务很开心"
+    - "Bye， 下次再见"
+  utter_default:
+    - "您说什么"
+    - "您能再说一遍吗，我没听清"
+  utter_thanks:
+    - "不用谢"
+    - "我应该做的"
+    - "您开心我就开心"
+  utter_ask_morehelp:
+    - "还有什么能帮您吗"
+    - "您还想干什么"
+  utter_ask_service:
+    - "你需要什么服务，车险报价，理赔，报案"
+  utter_ask_name:
+    - "怎么称呼您？"
+    - "您的姓名是什么？"
+  utter_ask_carno:
+    - "你的车牌号是多少？"
+    - "你的车牌号是什么？"
+  utter_ask_class:
+    - "你需要的保额是50万，100万，200万？"
+  utter_ack_result:
+    - "{name}, 已经为您办理好了{carno}的保额{class}，报价为6500元，感谢你对我们的信任"
+
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_default
+  - utter_thanks
+  - utter_ask_morehelp
+  - utter_ask_service
+  - utter_ask_name
+  - utter_ask_carno
+  - utter_ask_class
+  - utter_ack_result
+  - actions.ActionSlotReset

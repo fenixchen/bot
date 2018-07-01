@@ -1,0 +1,1122 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "你好",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "在吗",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "很高兴认识你",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "你们好",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "嗨",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "Hi！",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "Hello",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "是",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "是的",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "可以",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "那可以的",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "行",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "好的",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "就这样吧",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "Yes",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "不",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "不是",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "不是的",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "不行",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "不可以",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "不好",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "算了吧",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "我需要车险服务",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "车险报价",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "你们有车险报价服务吗？",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "能否提供车险报价服务",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 4,
+            "end": 6,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "给我的车咨询一下车险报价",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 8,
+            "end": 10,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "咨询一下车险报价",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 4,
+            "end": 6,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "我叫尚宇亮",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "尚宇亮",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "叫我尚宇亮",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "尚宇亮",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我是周军",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 4,
+            "value": "周军",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我的名字是周军",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 5,
+            "end": 7,
+            "value": "周军",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我叫周军",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 4,
+            "value": "周军",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我的车牌号是沪AHB927",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 6,
+            "end": 13,
+            "value": "沪AHB927",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "车牌是沪AHB927",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 3,
+            "end": 10,
+            "value": "沪AHB927",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "我的车牌为沪BHB927",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 5,
+            "end": 12,
+            "value": "沪BHB927",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "车的牌号为沪B123456",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 5,
+            "end": 13,
+            "value": "沪B123456",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "沪A123456",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 0,
+            "end": 8,
+            "value": "沪A123456",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "我的保险额度为50万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 7,
+            "end": 10,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我的保险额度为100万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 7,
+            "end": 11,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我的保险额度为200万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 7,
+            "end": 11,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "50万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "100万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 4,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "200万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 4,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "再见",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "再会",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "bye",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "拜拜",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "拜拜了",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "稍后再见",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "谢谢",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "非常感谢",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "thanks",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "thks",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "谢了",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "谢谢你的帮助",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "很高心见到你",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "ok",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "可以的",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "行",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "我姓陈",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 3,
+            "value": "陈",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "那下次再聊",
+        "intent": "goodbye",
+        "entities": []
+      },
+      {
+        "text": "不要了",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "我叫陈连鑫",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "陈连鑫",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我需要100万额度",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 7,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我需要200万额度",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 7,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我需要50万额度",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 6,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我是陈连鑫",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "陈连鑫",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我叫陈连鑫",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "陈连鑫",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我的名字是陈连鑫",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 5,
+            "end": 8,
+            "value": "陈连鑫",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "叫我陈连鑫",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "陈连鑫",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "以后再说",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "我需要100万 ",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 8,
+            "value": "100万 ",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我需要50万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 6,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我需要200万",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 7,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我姓周",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 3,
+            "value": "周",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我姓王",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 3,
+            "value": "王",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我姓李",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 3,
+            "value": "李",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我姓尚",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 3,
+            "value": "尚",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "你们能干嘛",
+        "intent": "inform_service",
+        "entities": []
+      },
+      {
+        "text": "你们有什么服务",
+        "intent": "inform_service",
+        "entities": []
+      },
+      {
+        "text": "能帮我查下车险吗",
+        "intent": "inform_service",
+        "entities": [
+          {
+            "start": 5,
+            "end": 7,
+            "value": "车险",
+            "entity": "service"
+          }
+        ]
+      },
+      {
+        "text": "陈连鑫",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "陈连鑫",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "尚宇亮",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "尚宇亮",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "周军",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "value": "周军",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "洪凯",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "value": "洪凯",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "曲井起",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "曲井起",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "周欢磊",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "周欢磊",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "谢谢你的帮忙",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "感谢感谢",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "那谢谢了",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "麻烦你了",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "谢谢你了",
+        "intent": "thanks",
+        "entities": []
+      },
+      {
+        "text": "我的名字是尚宇亮",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 5,
+            "end": 8,
+            "value": "尚宇亮",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "我的名字是周欢磊",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 5,
+            "end": 8,
+            "value": "周欢磊",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "就50万的吧",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 1,
+            "end": 4,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "就100万的吧",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 1,
+            "end": 5,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "就200万的吧",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 1,
+            "end": 5,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我是尚宇亮",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "尚宇亮",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "要50万的",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 1,
+            "end": 4,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "要100万的",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 1,
+            "end": 5,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "要200万的",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 1,
+            "end": 5,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我的车牌是沪kn3254",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 5,
+            "end": 12,
+            "value": "沪kn3254",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "车牌应该是沪ah3214",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 5,
+            "end": 12,
+            "value": "沪ah3214",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "车牌号是沪kb522",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 4,
+            "end": 10,
+            "value": "沪kb522",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "叫我周先生吧",
+        "intent": "inform_name",
+        "entities": [
+          {
+            "start": 2,
+            "end": 5,
+            "value": "周先生",
+            "entity": "name"
+          }
+        ]
+      },
+      {
+        "text": "50的",
+        "intent": "inform_class50",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "value": "50",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "100的",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "100",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "200的",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "200",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "沪jb53fd",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "沪jb53fd",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "沪ki736b",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "沪ki736b",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "沪pc268n",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "沪pc268n",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "我的车是沪A17253",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 4,
+            "end": 11,
+            "value": "沪A17253",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "我的车是沪B7625s",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 4,
+            "end": 11,
+            "value": "沪B7625s",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "我的车是沪A86741",
+        "intent": "inform_carno",
+        "entities": [
+          {
+            "start": 4,
+            "end": 11,
+            "value": "沪A86741",
+            "entity": "carno"
+          }
+        ]
+      },
+      {
+        "text": "我需要50万的保险",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 6,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我需要100万的保险",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 7,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "我需要200万的保险",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 3,
+            "end": 7,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "50万的保额",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "value": "50万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "100万的保额",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 4,
+            "value": "100万",
+            "entity": "class"
+          }
+        ]
+      },
+      {
+        "text": "200万的保额",
+        "intent": "inform_class",
+        "entities": [
+          {
+            "start": 0,
+            "end": 4,
+            "value": "200万",
+            "entity": "class"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -6,9 +6,18 @@ import itertools
 import train_nlu
 import train_dlg
 import os
+import random
+import botpath
 
+# 每个set最多包含的项目
+MAX_ELEMENTS_PER_SET = 1000
 
-MAX_ELEMENTS = 100
+# 单个Story最多包含的实例
+MAX_INSTANCE_PER_STORY = 100
+
+# 每个intent最多的例子
+MAX_COMMON_EXAMPLES = 1000
+
 
 class NLUData(object):
     def __init__(self):
@@ -16,7 +25,7 @@ class NLUData(object):
         self._intents = []
         self._pre_defined_slots = {}
         self._templates = {}
-        self._actions = []
+        self._actions = {}
         self._stories = []
         self._nlu_file = None
 
@@ -83,14 +92,6 @@ class NLUData(object):
         entity_list = []
         for slot in slots:
             entity_list.append(slot)
-
-        domain_dict = {
-            'slots': slots,
-            'intents': intent_list,
-            'entities': entity_list,
-            'templates': self._templates,
-            'actions': self._actions,
-        }
         print('Save to domain file:<%s>' % filename)
         f = open(filename, 'w', encoding='UTF-8')
         f.write("slots:\n")
@@ -107,16 +108,22 @@ class NLUData(object):
             f.write('  - %s\n' % slot)
 
         f.write('\ntemplates:\n')
-        for name, template in self._templates.items():
-            f.write('  %s:\n' % name)
-            for t in template:
-                f.write('    - \"%s\"\n' % t)
+        for action in self._actions:
+            if type(action) is dict:
+                name = next(iter(action))
+                f.write('  %s:\n' % name)
+                if name in action:
+                    for t in action[name]:
+                        f.write('    - \"%s\"\n' % t)
 
         f.write('\nactions:\n')
         for action in self._actions:
-            f.write('  - %s\n' % action)
+            if type(action) is dict:
+                name = next(iter(action))
+            else:
+                name = action
+            f.write('  - %s\n' % name)
 
-        #yaml.dump(domain_dict, f, default_flow_style=False, allow_unicode=True)
         f.close()
 
     def gen_story_file(self, filename):
@@ -132,13 +139,14 @@ class NLUData(object):
         for intent in self._intents:
             if intent.name == name:
                 return intent.intent_sets()
-        return []
+        assert False, "找不到intent <%s>" % name
 
     def load_file(self, file):
         fn = os.path.dirname(self._nlu_file) + '/' + file
         with open(fn, 'r', encoding='utf-8') as f:
             return f.read()
-        assert(False)
+        assert (False)
+
 
 class Story(object):
     INDEX = 0
@@ -155,15 +163,24 @@ class Story(object):
             name = next(iter(step))
             sets = self._nlu.intent_sets(name)
             if len(sets) >= 1:
-                var = self._nlu.sets[sets[0]]
-                vector.append(list(range(0, min(var.count, 100))))
-                parts.append(var)
+                count = 1
+                vars = []
+                for set in sets:
+                    var = self._nlu.sets[set]
+                    vars.append(var)
+                    count *= var.count
+                vector.append(list(range(0, count)))
+                parts.append(vars)
             else:
-                vector.append(list(range(0, 1)))
+                vector.append([0])
                 parts.append(name)
 
         s = ''
-        for v in list(itertools.product(*vector)):
+        # 计算出所有组合的笛卡尔乘积, 产生[[0, 1, 0], [1, 2, 3], ...]
+        # 每个列表代表一个story, 数字代表使用所在set的第几个
+        count = 0
+        product = list(list(itertools.product(*vector)))
+        for v in product:
             s += '## story_%s_%d\n' % (self._name, Story.INDEX)
             Story.INDEX += 1
             for i, step in enumerate(self._steps):
@@ -173,12 +190,21 @@ class Story(object):
                     s += '* %s\n' % name
                 else:
                     s += '* %s{' % name
-                    s += '\"%s\": \"%s\"' % (parts[i].name, parts[i].elements[v[i]])
+                    slots = {}
+                    for part in parts[i]:
+                        elem = part.elements[random.randint(0, part.count - 1)]
+                        slots[part.name] = elem
+                    for slot, value in slots.items():
+                        s += '\"%s\": \"%s\",' % (slot, value)
                     s += '}\n'
-                    s += '    - slot{\"%s\": \"%s\"}\n' % (parts[i].name, parts[i].elements[v[i]])
+                    for slot, value in slots.items():
+                        s += '    - slot{\"%s\": \"%s\"}\n' % (slot, value)
                 for utter in utters:
                     s += '    - %s\n' % utter
             s += '\n'
+            count += 1
+            if count > MAX_INSTANCE_PER_STORY:
+                break
         return s
 
 
@@ -193,7 +219,7 @@ class Set(object):
                 if key == 'file':
                     content = nlu.load_file(value)
                     lines = re.split('[\n \t,]+', content)
-                    self._elements.extend(lines[:MAX_ELEMENTS])
+                    self._elements.extend(lines[:MAX_ELEMENTS_PER_SET])
                 else:
                     assert False, 'Unknown key:' % key
             elif type(elem) is str:
@@ -330,22 +356,21 @@ class Intent(object):
                 'intent': self._name,
                 'entities': entities,
             })
+            if len(intents) > MAX_COMMON_EXAMPLES:
+                break
         return intents
 
 
-yaml_file = 'simple/simple.nlu.yaml'
-intent_file = 'simple/data.json'
-domain_file = 'simple/domain.yml'
-story_file = 'simple/stories.md'
+yaml_file = botpath.PROJECT + '/' + botpath.PROJECT + '.nlu.yaml'
 
-TRAIN_AFTER_GEN = 1
+TRAIN_AFTER_GEN = 0
 
 if __name__ == '__main__':
     nlu_data = NLUData()
     nlu_data.load(yaml_file)
-    nlu_data.gen_intent_file(intent_file)
-    nlu_data.gen_domain_file(domain_file)
-    nlu_data.gen_story_file(story_file)
+    nlu_data.gen_intent_file(botpath.NLU_DATA_FILE)
+    nlu_data.gen_domain_file(botpath.DOMAIN_FILE)
+    nlu_data.gen_story_file(botpath.STORY_FILE)
     if TRAIN_AFTER_GEN:
         train_nlu.train_nlu()
         train_dlg.train_dlg()

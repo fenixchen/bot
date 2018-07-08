@@ -36,7 +36,7 @@ sets:
     - file: set/name.txt
   city:
     - file: set/city.txt
-  resturant:
+  restaurant:
     - 中餐馆
     - 西餐馆
     - 泰国菜
@@ -61,12 +61,26 @@ intents:
     - 我是$(name)
     - 我叫$(name)
     - 可以叫我$(name)
-  ask_resturant:
-    - 我要找$(city)的$(resturant)
-
+  ask_restaurant:
+    - 我要找$(city)的$(restaurant)
 
 stories:
-  hello:
+  find_restaurant:
+    - greet:
+      - utter_greet
+    - ask_restaurant:
+      - utter_restaurant
+    - goodbye:
+      - utter_bye
+  say_hi:
+    - greet:
+      - utter_greet
+      - ask_name
+    - inform_name:
+      - utter_name
+    - goodbye:
+      - utter_bye
+  insurance:
     - greet:
       - utter_greet
       - ask_name
@@ -82,39 +96,31 @@ stories:
       - utter_insurance
     - goodbye:
       - utter_bye
-
 slots:
   fee:
     type: text
 
-templates:
-  utter_greet:
-    - "您好, 我是机器人"
-  utter_bye:
-    - "再见, {name}, 为您服务很开心"
-  utter_name:
-    - "欢迎你, {name}"
-  utter_please_provide_name:
-    - "输入有误,请说出你的名字"
-  ask_name:
-    - "请问你叫什么名字"
-  ask_carno:
-    - "请问你的车牌是什么"
-  utter_carno:
-    - "{name}, 您的车牌号是{carno}"
-  utter_yes_or_no:
-    - "请问确认要投保吗?"
-  utter_insurance:
-    - "{name}, 您的车牌号为{carno}的车投保已成功,保险费为{fee},谢谢."
-
 actions:
-  - utter_greet
-  - utter_bye
-  - ask_name
-  - utter_name
-  - ask_carno
-  - utter_carno
-  - utter_please_provide_name
-  - utter_yes_or_no
-  - utter_insurance
+  - utter_greet:
+    - "您好, 我是机器人"
+    - "你好"
+  - utter_bye:
+    - "再见, {name}, 为您服务很开心"
+    - "再见了"
+  - ask_name:
+    - "请问你叫什么名字"
+  - utter_name:
+    - "欢迎你, {name}"
+  - ask_carno:
+    - "请问你的车牌是什么"
+  - utter_carno:
+    - "{name}, 您的车牌号是{carno}"
+  - utter_please_provide_name:
+    - "输入有误,请说出你的名字"
+  - utter_yes_or_no:
+    - "请问确认要投保吗?"
+  - utter_insurance:
+    - "{name}, 您的车牌号为{carno}的车投保已成功,保险费为{fee},谢谢."
+  - utter_restaurant:
+    - "不好意思, 没有找到{city}的{restaurant}"
   - action.ActionQueryInsurance

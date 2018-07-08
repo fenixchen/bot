@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import botpath
-
+import shutil
 
 def train_dlg():
     print("=> Importing tensorflow...")
@@ -28,6 +28,8 @@ def train_dlg():
         max_training_samples=300
     )
     print("=> Saving Result to %s..." % botpath.DIALOGUE_PATH)
+
+    shutil.rmtree(botpath.DIALOGUE_PATH)
     agent.persist(botpath.DIALOGUE_PATH)
 
 

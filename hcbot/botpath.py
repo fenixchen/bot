@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 
-PROJECT = "simple"
+#PROJECT = "simple"
+
+PROJECT = "insurance"
 
 DATA_FOLDER = PROJECT + '/'
 

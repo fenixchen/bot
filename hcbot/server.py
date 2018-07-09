@@ -42,7 +42,8 @@ def ask():
     response = {}
     question = get_request_arg(request, "question")
     session_id = get_request_arg(request, "session_id")
-    answers = agent.handle_message(question, sender_id=session_id)
+    #, sender_id=session_id
+    answers = agent.handle_message(question)
     answers_text = ''
     for msg in answers:
         if 'text' in msg:

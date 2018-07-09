@@ -3,6 +3,7 @@
 import botpath
 import shutil
 
+
 def train_dlg():
     print("=> Importing tensorflow...")
     import tensorflow as tf
@@ -29,7 +30,7 @@ def train_dlg():
     )
     print("=> Saving Result to %s..." % botpath.DIALOGUE_PATH)
 
-    shutil.rmtree(botpath.DIALOGUE_PATH)
+    shutil.rmtree(botpath.DIALOGUE_PATH, ignore_errors=True)
     agent.persist(botpath.DIALOGUE_PATH)
 
 

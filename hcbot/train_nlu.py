@@ -3,6 +3,7 @@
 import botpath
 import shutil
 
+
 def train_nlu():
     print("=> Importing rasa_nlu...")
     from rasa_nlu.training_data import load_data
@@ -15,7 +16,7 @@ def train_nlu():
     trainer.train(training_data)
 
     print("=> Saving Result...")
-    shutil.rmtree(botpath.NLU_MODEL_PATH)
+    shutil.rmtree(botpath.NLU_MODEL_PATH, ignore_errors=True)
     model_directory = trainer.persist(botpath.NLU_MODEL_PATH, fixed_model_name=botpath.PROJECT)
 
 

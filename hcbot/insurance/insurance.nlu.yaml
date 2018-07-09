@@ -1,16 +1,18 @@
 sets:
   confirm:
-    - 是的
-    - 是
-    - 确认
-    - 肯定
-    - 'YES'
+    - file: ../set/confirm.txt
   deny:
-    - 不是
-    - 不要
-    - 不
-    - 'NO'
-    - 取消
+    - file: ../set/deny.txt
+  greet:
+    - file: ../set/greet.txt
+  goodbye:
+    - file: ../set/bye.txt
+  province:
+    - file: ../set/province.txt
+  name:
+    - file: ../set/name.txt
+  city:
+    - file: ../set/city.txt
   carno:
     - file: ../set/carno.txt
   insurance:
@@ -19,28 +21,15 @@ sets:
     - 车险费用
     - 查一下车险
     - 明年的车险
-  greet:
-    - Hello
-    - 你好
-    - Hi
-    - 嗨
-    - 见到你很高心
-  goodbye:
-    - 再见
-    - 拜拜
-    - Bye
-    - See you
-  province:
-    - file: ../set/province.txt
-  name:
-    - file: ../set/name.txt
-  city:
-    - file: ../set/city.txt
-  restaurant:
-    - 中餐馆
-    - 西餐馆
-    - 泰国菜
-
+  compensate:
+    - 理赔
+    - 赔偿
+  report:
+    - 报案
+    - 出险
+  manual:
+    - 转人工
+    - 人工
 intents:
   confirm:
     - $(_confirm)
@@ -52,8 +41,8 @@ intents:
     - $(_goodbye)
   insurance:
     - $(_insurance)
-  input_carno:
-    - $(carno)
+  manual:
+    - $(_manual)
   inform_carno:
     - 我的车牌是$(carno)
     - 车牌是$(carno)
@@ -61,66 +50,66 @@ intents:
     - 我是$(name)
     - 我叫$(name)
     - 可以叫我$(name)
-  ask_restaurant:
-    - 我要找$(city)的$(restaurant)
 
-stories:
-  find_restaurant:
-    - greet:
-      - utter_greet
-    - ask_restaurant:
-      - utter_restaurant
-    - goodbye:
-      - utter_bye
-  say_hi:
+stories1:
+  manual:
     - greet:
       - utter_greet
       - ask_name
     - inform_name:
       - utter_name
+      - ask_service
+    - manual:
+      - utter_manual
+      - ask_service
     - goodbye:
       - utter_bye
+stories:
   insurance:
     - greet:
       - utter_greet
       - ask_name
     - inform_name:
       - utter_name
+      - ask_service
+    - insurance:
       - ask_carno
     - inform_carno:
       - utter_carno
-    - insurance:
-      - action_query_insurance
-      - utter_yes_or_no
+      - action.ActionQueryInsurance
+      - ask_yes_or_no
     - confirm:
       - utter_insurance
+      - ask_service
     - goodbye:
       - utter_bye
+
 slots:
   fee:
     type: text
-
 actions:
   - utter_greet:
-    - "您好, 我是机器人"
-    - "你好"
+    - "欢迎致电世界500强平安,我是王伟,工号6500"
+  - ask_name:
+    - "请问怎么称呼您"
   - utter_bye:
     - "再见, {name}, 为您服务很开心"
-    - "再见了"
-  - ask_name:
-    - "请问你叫什么名字"
+    - "再见了,感谢您致电平安"
   - utter_name:
     - "欢迎你, {name}"
   - ask_carno:
-    - "请问你的车牌是什么"
+    - "请问你的车牌是什么?"
+  - ask_service:
+    - "请问您需要什么服务?"
+    - "请问有什么可以帮助到您的?"
   - utter_carno:
     - "{name}, 您的车牌号是{carno}"
   - utter_please_provide_name:
     - "输入有误,请说出你的名字"
-  - utter_yes_or_no:
+  - ask_yes_or_no:
     - "请问确认要投保吗?"
   - utter_insurance:
     - "{name}, 您的车牌号为{carno}的车投保已成功,保险费为{fee},谢谢."
-  - utter_restaurant:
-    - "不好意思, 没有找到{city}的{restaurant}"
+  - utter_manual:
+    - "转人工成功,稍候我们会有专员为您服务."
   - action.ActionQueryInsurance

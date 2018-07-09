@@ -8,15 +8,16 @@ import train_dlg
 import os
 import random
 import botpath
+import sys
 
 # 每个set最多包含的项目
-MAX_ELEMENTS_PER_SET = 1000
+MAX_ELEMENTS_PER_SET = 100
 
 # 单个Story最多包含的实例
 MAX_INSTANCE_PER_STORY = 100
 
 # 每个intent最多的例子
-MAX_COMMON_EXAMPLES = 1000
+MAX_COMMON_EXAMPLES = 100
 
 
 class NLUData(object):
@@ -36,6 +37,19 @@ class NLUData(object):
     @property
     def intents(self):
         return self._intents
+
+    def find_intent(self, name):
+        for intent in self._intents:
+            if intent.name == name:
+                return True
+        return False
+
+    def find_utter(self, utter):
+        for action in self._actions:
+            if utter in action:
+                return True
+        else:
+            return False
 
     def load(self, nlu_file):
         self._nlu_file = nlu_file
@@ -129,7 +143,11 @@ class NLUData(object):
     def gen_story_file(self, filename):
         content = ''
         for story in self._stories:
-            content += story.dump()
+            if not story.check():
+                break
+
+        for story in self._stories:
+            content += story.generate()
         print('Save to story file:<%s>' % filename)
         f = open(filename, 'w', encoding='UTF-8')
         f.write(content)
@@ -156,7 +174,18 @@ class Story(object):
         self._name = name
         self._steps = steps
 
-    def dump(self):
+    def check(self):
+        for step in self._steps:
+            intent = next(iter(step))
+            utters = step[intent]
+            if not self._nlu.find_intent(intent):
+                raise Exception("Cannot find intent %s" % intent)
+            for utter in utters:
+                if not self._nlu.find_utter(utter):
+                    raise Exception("Cannot find utter %s" % utter)
+        return True
+
+    def generate(self):
         parts = []
         vector = []
         for step in self._steps:
@@ -196,11 +225,14 @@ class Story(object):
                         slots[part.name] = elem
                     for slot, value in slots.items():
                         s += '\"%s\": \"%s\",' % (slot, value)
+                    s = s[:-2]
                     s += '}\n'
                     for slot, value in slots.items():
                         s += '    - slot{\"%s\": \"%s\"}\n' % (slot, value)
                 for utter in utters:
                     s += '    - %s\n' % utter
+                    if utter == 'action.ActionQueryInsurance':
+                        s += '    - slot{"fee": 5000}\n'
             s += '\n'
             count += 1
             if count > MAX_INSTANCE_PER_STORY:
@@ -371,6 +403,9 @@ if __name__ == '__main__':
     nlu_data.gen_intent_file(botpath.NLU_DATA_FILE)
     nlu_data.gen_domain_file(botpath.DOMAIN_FILE)
     nlu_data.gen_story_file(botpath.STORY_FILE)
+    for arg in sys.argv:
+        if arg == '-g':
+            TRAIN_AFTER_GEN = 1
     if TRAIN_AFTER_GEN:
         train_nlu.train_nlu()
         train_dlg.train_dlg()

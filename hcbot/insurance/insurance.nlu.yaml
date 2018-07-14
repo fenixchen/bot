@@ -19,6 +19,7 @@ sets:
     - 车险
     - 保险
     - 车险费用
+    - 买车险
     - 查一下车险
     - 明年的车险
   compensate:
@@ -50,7 +51,6 @@ intents:
     - 我是$(name)
     - 我叫$(name)
     - 可以叫我$(name)
-
 stories1:
   manual:
     - greet:
@@ -83,7 +83,6 @@ stories:
       - ask_service
     - goodbye:
       - utter_bye
-
 slots:
   fee:
     type: text
@@ -104,12 +103,18 @@ actions:
     - "请问有什么可以帮助到您的?"
   - utter_carno:
     - "{name}, 您的车牌号是{carno}"
-  - utter_please_provide_name:
-    - "输入有误,请说出你的名字"
   - ask_yes_or_no:
     - "请问确认要投保吗?"
   - utter_insurance:
     - "{name}, 您的车牌号为{carno}的车投保已成功,保险费为{fee},谢谢."
   - utter_manual:
     - "转人工成功,稍候我们会有专员为您服务."
+  - utter_please_provide_name:
+    - "不好意思,您的姓名我没有听清,能再说一遍吗?"
+  - utter_please_provide_carno:
+    - "不好意思,您的车牌号我没有听清,能再说一遍吗?"
+  - utter_default:
+    - "对不起,我不明白您的意思"
+    - "不好意思,请再讲一遍,没有听懂"
   - action.ActionQueryInsurance
+  - action.ActionReset

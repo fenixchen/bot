@@ -2,6 +2,7 @@
 
 import botpath
 import shutil
+from rasa_core.policies.fallback import FallbackPolicy
 
 
 def train_dlg():
@@ -13,6 +14,10 @@ def train_dlg():
     from rasa_core.agent import Agent
     from rasa_core.policies.memoization import MemoizationPolicy
     from rasa_core.policies.keras_policy import KerasPolicy
+
+    """
+    fallback = FallbackPolicy(fallback_action_name="utter_default",core_threshold=0.1,nlu_threshold=0.1)
+    """
 
     agent = Agent(botpath.DOMAIN_FILE,
                   policies=[MemoizationPolicy(max_history=3),

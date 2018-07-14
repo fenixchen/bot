@@ -14,6 +14,8 @@ DOMAIN_FILE = DATA_FOLDER + 'domain.yml'
 
 STORY_FILE = DATA_FOLDER + 'stories.md'
 
+RULE_FILE = DATA_FOLDER + 'rules.yml'
+
 NLU_MODEL_PATH = "models/nlu/"
 
 NLU_DATA_FOLDER = NLU_MODEL_PATH + "/default/" + PROJECT

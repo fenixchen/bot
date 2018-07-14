@@ -395,7 +395,7 @@ class Intent(object):
 
 yaml_file = botpath.PROJECT + '/' + botpath.PROJECT + '.nlu.yaml'
 
-TRAIN_AFTER_GEN = 0
+TRAIN_AFTER_GEN = False
 
 if __name__ == '__main__':
     nlu_data = NLUData()
@@ -405,7 +405,7 @@ if __name__ == '__main__':
     nlu_data.gen_story_file(botpath.STORY_FILE)
     for arg in sys.argv:
         if arg == '-g':
-            TRAIN_AFTER_GEN = 1
+            TRAIN_AFTER_GEN = True
     if TRAIN_AFTER_GEN:
         train_nlu.train_nlu()
         train_dlg.train_dlg()

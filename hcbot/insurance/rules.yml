@@ -1,0 +1,35 @@
+input_validation:
+
+  - after: ask_name
+    expected:
+      - intents:
+        - inform_name
+        entities:
+          - name
+      - intents:
+        - input_name
+        entities:
+          - name
+    error_template: utter_please_provide_name
+
+  - after: ask_carno
+    expected:
+      - intents:
+        - inform_carno
+        entities:
+          - carno
+      - intents:
+        - input_carno
+        entities:
+          - carno
+    error_template: utter_please_provide_carno
+
+intent_substitutions:
+
+  - after: ask_carno
+    intent: input_carno
+    unless: inform_carno
+
+  - after: ask_name
+    intent: input_name
+    unless: inform_name

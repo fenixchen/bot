@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 from rasa_core.actions import Action
 from rasa_core.events import SlotSet
+from rasa_core.events import AllSlotsReset
+from rasa_core.events import Restarted
 
 
 class ActionQueryInsurance(Action):
@@ -20,3 +22,11 @@ class ActionQueryInsurance(Action):
               "车牌为%s牌, 总保费是%d元" % (hu, fee)
         dispatcher.utter_message(msg)
         return [SlotSet("fee", fee)]
+
+
+class ActionReset(Action):
+    def name(self):
+        return 'action.ActionReset'
+
+    def run(self, dispatcher, tracker, domain):
+        return [Restarted(), AllSlotsReset()]

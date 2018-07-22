@@ -18,10 +18,6 @@ sets:
   insurance:
     - 车险
     - 保险
-    - 车险费用
-    - 买车险
-    - 查一下车险
-    - 明年的车险
   compensate:
     - 理赔
     - 赔偿
@@ -29,8 +25,8 @@ sets:
     - 报案
     - 出险
   manual:
-    - 转人工
     - 人工
+    - 转人工
 intents:
   confirm:
     - $(_confirm)
@@ -75,7 +71,6 @@ stories:
     - insurance:
       - ask_carno
     - inform_carno:
-      - utter_carno
       - action.ActionQueryInsurance
       - ask_yes_or_no
     - confirm:
@@ -100,9 +95,8 @@ actions:
     - "请问你的车牌是什么?"
   - ask_service:
     - "请问您需要什么服务?"
-    - "请问有什么可以帮助到您的?"
   - utter_carno:
-    - "{name}, 您的车牌号是{carno}"
+    - "{name}, 您好,您爱车的车牌号是{carno}"
   - ask_yes_or_no:
     - "请问确认要投保吗?"
   - utter_insurance:

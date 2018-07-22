@@ -9,6 +9,7 @@ import os
 import random
 import botpath
 import sys
+import run
 
 # 每个set最多包含的项目
 MAX_ELEMENTS_PER_SET = 100
@@ -231,8 +232,8 @@ class Story(object):
                         s += '    - slot{\"%s\": \"%s\"}\n' % (slot, value)
                 for utter in utters:
                     s += '    - %s\n' % utter
-                    if utter == 'action.ActionQueryInsurance':
-                        s += '    - slot{"fee": 5000}\n'
+                    # if utter == 'action.ActionQueryInsurance':
+                    #    s += '    - slot{"fee": 5000}\n'
             s += '\n'
             count += 1
             if count > MAX_INSTANCE_PER_STORY:
@@ -396,6 +397,7 @@ class Intent(object):
 yaml_file = botpath.PROJECT + '/' + botpath.PROJECT + '.nlu.yaml'
 
 TRAIN_AFTER_GEN = False
+RUN_AFTER_TRAIN = False
 
 if __name__ == '__main__':
     nlu_data = NLUData()
@@ -406,6 +408,10 @@ if __name__ == '__main__':
     for arg in sys.argv:
         if arg == '-g':
             TRAIN_AFTER_GEN = True
+        if arg == '-r':
+            RUN_AFTER_TRAIN = True
     if TRAIN_AFTER_GEN:
         train_nlu.train_nlu()
         train_dlg.train_dlg()
+        if RUN_AFTER_TRAIN:
+            run.run()

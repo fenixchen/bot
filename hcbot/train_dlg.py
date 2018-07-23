@@ -16,7 +16,6 @@ def train_dlg():
     print("=> Importing rasa...")
     from rasa_core.agent import Agent
     from rasa_core.policies.memoization import MemoizationPolicy
-    from rasa_core.policies.augmented_memoization import AugmentedMemoizationPolicy
     from rasa_core.policies.keras_policy import KerasPolicy
 
     """

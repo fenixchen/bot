@@ -9,17 +9,7 @@ TEST_DIALOG = False
 
 
 
-def run_interpreter():
-    message = '车险'
-    from rasa_core.interpreter import RasaNLUInterpreter
-    print("=> HC NLU Bot Initializing...")
-    print("Load NLU %s" % botpath.NLU_DATA_FOLDER)
-    interpreter = RasaNLUInterpreter(botpath.NLU_DATA_FOLDER)
-    parse_data = interpreter.parse(message)
-    print("Received user message '{}' with intent '{}' "
-                 "and entities '{}'".format(message,
-                                            parse_data["intent"],
-                                            parse_data["entities"]))
+
 
 def run():
     logging.basicConfig(level=logging.DEBUG,
@@ -46,7 +36,7 @@ def run():
         rasa_core.policies.MemoizationPolicy.ENABLE_FEATURE_STRING_COMPRESSION = False
         index = 0
         dialogs = [
-            ('车险', 'None\n'),
+#            ('车险', 'None\n'),
             ('你好', '欢迎致电世界500强平安,我是王伟,工号6500\n请问怎么称呼您\n'),
             ('我叫张三丰', '欢迎你, 张三丰\n请问您需要什么服务?\n'),
             ('车险', '请问你的车牌是什么?\n'),
@@ -74,5 +64,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run_interpreter()
-    #run()
+    run()

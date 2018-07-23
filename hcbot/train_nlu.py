@@ -11,7 +11,7 @@ def train_nlu():
     from rasa_nlu.model import Trainer
 
     print("=> Training NLU...")
-    training_data = load_data(botpath.NLU_DATA_FILE, language = 'zh')
+    training_data = load_data(botpath.NLU_DATA_FILE)
     trainer = Trainer(config.load(botpath.CONFIG_FILE))
     trainer.train(training_data)
 

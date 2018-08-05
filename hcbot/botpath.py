@@ -2,7 +2,7 @@
 
 #PROJECT = "simple"
 
-PROJECT = "insurance"
+PROJECT = "mitie_test"
 
 DATA_FOLDER = PROJECT + '/'
 

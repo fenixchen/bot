@@ -1,6 +1,6 @@
-Hello
+hello
 你好
-Hi
+hi
 嗨
 见到你很高心
 hey

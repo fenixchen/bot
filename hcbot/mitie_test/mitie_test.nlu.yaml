@@ -1,0 +1,114 @@
+sets:
+  confirm:
+    - file: ../set/confirm.txt
+  deny:
+    - file: ../set/deny.txt
+  greet:
+    - file: ../set/greet.txt
+  goodbye:
+    - file: ../set/bye.txt
+  province:
+    - file: ../set/province.txt
+  name:
+    - file: ../set/name.txt
+  city:
+    - file: ../set/city.txt
+  carno:
+    - file: ../set/carno.txt
+  insurance:
+    - 车险
+    - 保险
+  compensate:
+    - 理赔
+    - 赔偿
+  report:
+    - 报案
+    - 出险
+  manual:
+    - 人工
+    - 转人工
+intents:
+  confirm:
+    - $(_confirm)
+  deny:
+    - $(_deny)
+  greet:
+    - $(_greet)
+  goodbye:
+    - $(_goodbye)
+  insurance:
+    - $(_insurance)
+  manual:
+    - $(_manual)
+  inform_carno:
+    - 我的车牌是$(carno)
+    - 车牌是$(carno)
+  inform_name:
+    - 我是$(name)
+    - 我叫$(name)
+    - 可以叫我$(name)
+stories1:
+  manual:
+    - greet:
+      - utter_greet
+      - ask_name
+    - inform_name:
+      - utter_name
+      - ask_service
+    - manual:
+      - utter_manual
+      - ask_service
+    - goodbye:
+      - utter_bye
+stories:
+  insurance:
+    - greet:
+      - utter_greet
+      - ask_name
+    - inform_name:
+      - utter_name
+      - ask_service
+    - insurance:
+      - ask_carno
+    - inform_carno:
+      - action.ActionQueryInsurance
+      - ask_yes_or_no
+    - confirm:
+      - utter_insurance
+      - ask_service
+    - goodbye:
+      - utter_bye
+slots:
+  fee:
+    type: text
+actions:
+  - utter_greet:
+    - "欢迎致电世界500强平安,我是王伟,工号6500"
+  - ask_name:
+    - "请问怎么称呼您"
+  - utter_bye:
+    - "再见, {name}, 为您服务很开心"
+    - "再见了,感谢您致电平安"
+  - utter_name:
+    - "欢迎你, {name}"
+  - ask_carno:
+    - "请问你的车牌是什么?"
+  - ask_service:
+    - "请问您需要什么服务?"
+  - utter_carno:
+    - "{name}, 您好,您爱车的车牌号是{carno}"
+  - ask_yes_or_no:
+    - "请问确认要投保吗?"
+  - utter_insurance:
+    - "{name}, 您的车牌号为{carno}的车投保已成功,保险费为{fee},谢谢."
+  - utter_manual:
+    - "转人工成功,稍候我们会有专员为您服务."
+  - utter_please_provide_name:
+    - "不好意思,您的姓名我没有听清,能再说一遍吗?"
+  - utter_please_provide_carno:
+    - "不好意思,您的车牌号我没有听清,能再说一遍吗?"
+  - utter_default:
+    - "对不起,我不明白您的意思"
+    - "不好意思,请再讲一遍,没有听懂"
+  - action.ActionQueryInsurance
+  - action.ActionReset

@@ -8,3 +8,4 @@ pipeline:
 - name: "ner_synonyms"
 - name: "intent_featurizer_mitie"
 - name: "intent_classifier_sklearn"
+- name: "hc_featurizer.HcRegexNLP"
